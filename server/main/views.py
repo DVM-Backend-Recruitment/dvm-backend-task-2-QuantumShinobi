@@ -97,7 +97,7 @@ class PasswordChangeView(View):
         user = User.objects.get(uuid=request.COOKIES['user-identity'])
         old_password = request.POST['current_password']
         new_password = request.POST['new_password']
-        if bcrypt.checkpw(bytes(old_password, 'utf-8'), user.password):
+        if user.authenticate(email=user.email, password=old_password):
             user.password = bcrypt.hashpw(
                 bytes(new_password, 'utf-8'), bcrypt.gensalt())
             user.save()

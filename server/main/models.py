@@ -61,14 +61,16 @@ class User(models.Model):
         self.tickets.append(ticket)
         self.save()
 
-    def authenticate(self, request):
-        email = request.POST['email']
-        password = request.POST['password']
+    def authenticate(self, request=None, email=None, password=None):
+        if request:
+            email = request.POST['email']
+            password = request.POST['password']
         user = User.objects.get(email=email)
+
         if type(user.password) == memoryview:
             if bcrypt.checkpw(bytes(password, 'utf-8'), user.password.tobytes()):
                 return user
-        if bcrypt.checkpw(bytes(password, 'utf-8'), user.password):
+        elif bcrypt.checkpw(bytes(password, 'utf-8'), user.password):
             return user
         return None
 
