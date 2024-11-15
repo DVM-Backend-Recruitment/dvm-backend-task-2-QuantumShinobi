@@ -1,4 +1,4 @@
-name: cinema-cloud
+name: cinema-cloud-final
 services:
   web:
     image: web
