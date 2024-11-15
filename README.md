@@ -1,8 +1,59 @@
-# Task-2
-Task 2 for Recruitment process of Dept. of Visual Media
+# CinemaCloud
 
- Task Link: https://royal-monarch-4e2.notion.site/DVM-Backend-Recruitment-Task-Round-2-11af5408dc0980bd92b3f708650060f2
- 
- ## Deadline: 15th Nov
- ---
- Note: The interview will start just after the deadline is met, so try to keep a hold of your codebase and make sure that you understand your code we don't appreciate mindless copy-pasting.(Atleast remove the comments after copying.)
+A full-featured movie ticket booking system built with Django, featuring user and theatre administration capabilities. The application uses PostgreSQL for data storage and is containerized using Docker for easy deployment.
+
+## Features
+
+### User Features
+
+- **Authentication**
+
+  - Email & Password login
+  - Google OAuth integration
+  - Email verification
+  - Secure password reset
+
+- **Booking Management**
+
+  - Movie ticket booking with seat selection
+  - Food & beverage ordering
+  - Digital wallet transactions
+  - Ticket cancellation system
+  - Email confirmations for bookings
+  - Transaction history
+
+- **User Experience**
+  - Movie search functionality
+  - Location-based theatre filtering
+  - Profile management
+  - Booking history
+
+### Theatre Administration
+
+- **Theatre Management**
+  - Screen configuration
+  - Show scheduling
+  - Food item inventory
+  - Revenue tracking
+  - Transaction monitoring
+  - Wallet management
+
+## Tech Stack
+
+- **Backend**: Django
+- **Database**: PostgreSQL
+- **Web Server**: Nginx
+- **WSGI Server**: Gunicorn
+- **Authentication**: Django AllAuth
+- **Containerization**: Docker
+
+## Setup Instructions
+
+### Development Environment
+
+1. Clone the repository
+
+```sh
+git clone <repository-url>
+cd cinemacloud
+```
