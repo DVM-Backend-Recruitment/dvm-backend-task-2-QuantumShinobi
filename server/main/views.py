@@ -222,8 +222,9 @@ class ConfirmTransactionView(View):
             return redirect("/wallet?wrong_otp=true")
 
         elif redir == "food":
+            ticket_id = request.POST['ticket_id']
+
             if otp == transaction.otp:
-                ticket_id = request.POST['ticket_id']
                 ticket = Ticket.objects.get(uuid=ticket_id)
                 ticket.food_order_confirmed = True
                 ticket.food_order_price = transaction.amount
