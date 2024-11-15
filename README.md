@@ -63,3 +63,49 @@ A full-featured movie ticket booking system built with Django, featuring user an
 git clone <repository-url>
 cd cinemacloud
 ```
+
+2. Create and activate a virtual environment
+
+```sh
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies
+
+```sh
+pip install -r requirements.txt
+```
+
+4. Set up PostgreSQL database
+
+```sh
+# Create database
+createdb cinemacloud
+
+# Apply migrations
+python manage.py migrate
+```
+
+5. Create environment variables file (.env)
+
+```sh
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+6. Run development server
+
+```sh
+python manage.py runserver
+```
+
+### Docker Deployment
+
+1. Build and start containers
+
+```sh
+docker-compose up --build
+```
+
+2. Access the application at `http://localhost:8000`
