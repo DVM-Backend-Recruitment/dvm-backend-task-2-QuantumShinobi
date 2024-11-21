@@ -1,3 +1,4 @@
+from django.utils.decorators import method_decorator
 from .mail import send_email, email_body
 import datetime
 from django.shortcuts import render, redirect
@@ -10,6 +11,23 @@ from .utils import gen_otp
 # Account related views
 
 
+def is_login_check(fn=None):
+    def login_check(request):
+        try:
+            request.COOKIES['user-identity']
+        except KeyError:
+            return redirect("main:login")
+        try:
+            user = User.objects.get(uuid=request.COOKIES['user-identity'])
+        except User.DoesNotExist:
+            resp = redirect("main:login")
+            resp.delete_cookie('user-identity')
+            return resp
+        return user
+    return login_check
+
+
+# @method_decorator(is_login_check, name='dispatch')
 class IndexView(View):
     def get(self, request):
         try:
@@ -369,7 +387,7 @@ def withdraw(request):
     send_email("OTP for CinemaCloud", email_body.format(
         otp=int(transaction.otp)), [user.email])
     transaction.save()
-    return render(request, "main/transaction_verify.html", context={"user": user, "transaction": transaction, "redirect": "withdraw"})
+    return render(request, "main/`transaction_verify`.html", context={"user": user, "transaction": transaction, "redirect": "withdraw"})
 
 
 def add(request):

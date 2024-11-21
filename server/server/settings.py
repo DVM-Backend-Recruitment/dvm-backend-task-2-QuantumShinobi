@@ -156,8 +156,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # DJANGO OAUTH2
-SITE_ID = 5
-
+SITE_ID = 3
+print(SITE_ID)
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': ['profile', 'email'],

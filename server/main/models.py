@@ -10,7 +10,7 @@ from django.conf import settings
 
 
 class Wallet(models.Model):
-    money = models.IntegerField(default=100)
+    money = models.PositiveIntegerField(default=1000)
     user_id = models.UUIDField(default=None, null=True)
     transaction_history = models.JSONField(null=True)
     th_admin_wallet = models.BooleanField(default=False)
@@ -95,7 +95,8 @@ class User(models.Model):
 
     def send_verification_email(self, request):
         query = VerificationQuery.objects.create(user=self)
-        link = f"{request.scheme}://{request.META['HTTP_HOST']}/verify/{query.uuid}/{self.uuid}"
+        link = f"{
+            request.scheme}://{request.META['HTTP_HOST']}/verify/{query.uuid}/{self.uuid}"
         send_email("Email Verification for CinemaCloud", verification_email.format(
             verification_link=link), [self.email])
         return True
